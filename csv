@@ -1,0 +1,28 @@
+import csv
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import tkinter as tk
+
+#wczytanie pliku
+with open("przykład.csv", "r",newline='',encoding="utf-8") as csvfile:
+    reader = csv.reader(csvfile)
+    file_contents = [row for row in reader]
+
+#plik
+columns= file_contents[0]
+text= file_contents[1:]
+df = pd.DataFrame(file_contents)
+df_frame = pd.DataFrame(text, columns = columns)
+
+a = np.array(df_frame)
+
+
+window = tk.Tk()
+
+label= tk.Label(window, text=df_frame)
+label.pack()
+window.mainloop()
+
+
